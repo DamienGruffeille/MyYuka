@@ -1,0 +1,90 @@
+body {
+  font-family: helvetica, arial, sans-serif;
+  background-color: rgb(221, 217, 217);
+}
+
+header {
+  background-color: rgb(221, 217, 217);
+  color: green;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Mise en forme du fieldset*/
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+}
+
+#btnAfficherOptions {
+  margin-top: 5px;
+  border: none;
+  background-color: rgb(221, 217, 217);
+  cursor: pointer;
+}
+
+#btnAfficherOptions:hover {
+  text-decoration: underline;
+}
+
+#choixOptions {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "opt1 opt2 opt3"
+    "opt4 opt5 opt6";
+  white-space: nowrap;
+  margin-top: 5px;
+  display: none;
+  overflow: hidden;
+}
+
+.checkbox {
+  color: red;
+}
+
+#btnSearch {
+  cursor: pointer;
+}
+
+/* Images */
+imgProduit {
+  width: auto;
+}
+
+#imgNutriScore {
+  width: 100px;
+}
+
+#imgProduit {
+  width: fit-content;
+}
+
+/* Résultat de la recherche */
+#bandeauImages {
+}
+
+/* mise en forme du pied de page */
+ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+li {
+  font-size: smaller;
+  list-style: none;
+  padding: 5px 5px 5px 5px;
+}
+
+li:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

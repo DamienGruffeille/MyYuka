@@ -4,15 +4,108 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Yuka</title>
+    <title>My Yuka - L'appli qui vous dit ce que vous mangez</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header></header>
+    <header>
+      <h1>My Yuka</h1>
+      <h2>
+        Mon outil de recherche pour comprendre ce que je mange, donc ce que je
+        suis !
+      </h2>
+    </header>
 
-    <article></article>
+    <article>
+      <fieldset>
+        <legend>Recherche</legend>
 
-    <aside></aside>
+        <div id="barreRecherche">
+          <input
+            type="search"
+            id="codeBarre"
+            placeholder="Saisissez le code barre du produit"
+          />
+          <button type="button" id="btnSearch">Rechercher</button>
+        </div>
 
-    <footer></footer>
+        <button type="button" id="btnAfficherOptions" class="collapsible">
+          Afficher options
+        </button>
+
+        <div id="choixOptions">
+          <div>
+            <input
+              type="checkbox"
+              name="ingredients"
+              id="ingredients"
+              checked
+            />
+            <label for="ingredients">Ingrédients</label>
+          </div>
+
+          <div>
+            <input
+              type="checkbox"
+              name="tableauNutritionnel"
+              id="cbxTableauNutritionnel"
+              checked
+            />
+            <label for="tableauNutritionnel">Tableau nutritionnel</label>
+          </div>
+
+          <div>
+            <input type="checkbox" name="allergenes" id="allergenes" checked />
+            <label for="allergenes">Allergènes</label>
+          </div>
+
+          <div>
+            <input type="checkbox" name="nutriscore" id="nutriscore" checked />
+            <label for="nutriscore">Nutri-score</label>
+          </div>
+
+          <div>
+            <input type="checkbox" name="nova" id="nova" checked />
+            <label for="nova">Nova-Score</label>
+          </div>
+
+          <div>
+            <input type="checkbox" name="ecoScore" id="ecoScore" checked />
+            <label for="ecoScore">Eco Score</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <div id="resultat">
+        <h3>Résultat de votre recherche</h3>
+        <div id="imgProduit"></div>
+
+        <div id="nomProduit"></div>
+
+        <div id="codeBarres"></div>
+
+        <div id="bandeauImages">
+          <img id="imgNutriScore" src="img/nutriScoreA.jpg" alt="Nutri-score" />
+          <img id="imgNova" src="img/nova1.JPG" alt="Score Nova" />
+          <img id="imgEcoScore" src="img/ecoScoreA.JPG" alt="Eco Score" />
+        </div>
+
+        <div id="listeIngredients">Liste ingrédients</div>
+
+        <div id="imgTableauNutritionnel">Tableau Nutritionnel</div>
+
+        <div id="listeAllergenes">Allergènes</div>
+      </div>
+    </article>
+
+    <footer>
+      <ul>
+        <li>Contactez-nous</li>
+        <li>A propos</li>
+        <li>Mentions légales</li>
+      </ul>
+    </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
