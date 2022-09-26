@@ -1,0 +1,22 @@
+{
+  "name": "myyuka",
+  "version": "1.0.0",
+  "description": "Utilisation de l'API openfoodfact",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DamienGruffeille/MyYuka.git"
+  },
+  "author": "Damien Gruffeille",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DamienGruffeille/MyYuka/issues"
+  },
+  "homepage": "https://github.com/DamienGruffeille/MyYuka#readme",
+  "dependencies": {
+    "hint": "^7.1.2"
+  }
+}
