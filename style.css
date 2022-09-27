@@ -5,7 +5,11 @@ body {
 
 header {
   background-color: rgb(221, 217, 217);
-  color: green;
+  color: #61745b;
+  text-align: center;
+}
+
+article {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,18 +23,32 @@ fieldset {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: fit-content;
+  background-color: #efefef;
+  border: 1px solid rgb(94, 92, 92);
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  margin-bottom: 15px;
 }
 
 #btnAfficherOptions {
   margin-top: 5px;
   border: none;
-  background-color: rgb(221, 217, 217);
+  background-color: #efefef;
   cursor: pointer;
 }
 
 #btnAfficherOptions:hover {
   text-decoration: underline;
+}
+
+#btnSearch {
+  cursor: pointer;
+}
+
+#error {
+  color: red;
+  display: none;
+  overflow: hidden;
 }
 
 #choixOptions {
@@ -45,29 +63,88 @@ fieldset {
   overflow: hidden;
 }
 
-.checkbox {
-  color: red;
+h3 {
+  display: none;
+  overflow: hidden;
 }
 
-#btnSearch {
+#resultat {
+  /* display: grid; */
+  display: none;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "infosProduit infosProduit infosProduit"
+    "imgNova imgNutriscore imgEcoScore"
+    "listesDeroulantes listesDeroulantes listesDeroulantes";
+  width: 100%;
+  align-items: center;
+}
+
+#infosProduit {
+  grid-area: infosProduit;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #61745b;
+  border: 1px solid rgb(94, 92, 92);
+  margin-bottom: 15px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+#nomCode {
+  display: flex;
+  flex-direction: column;
+}
+
+#imgNutriscore {
+  max-width: 100%;
+  grid-area: imgNutriscore;
+  align-self: center;
+  justify-self: center;
+}
+#imgNova {
+  max-width: 100%;
+  grid-area: imgNova;
+  align-self: center;
+  justify-self: center;
+}
+#imgEcoScore {
+  max-width: 100%;
+  grid-area: imgEcoScore;
+  justify-self: center;
+}
+
+#listesDeroulantes {
+  margin-top: 15px;
+  grid-area: listesDeroulantes;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.collapsible {
+  background-color: #61745b;
+  border: 1px solid rgb(94, 92, 92);
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 
-/* Images */
-imgProduit {
+.content {
+  display: none;
+  overflow: hidden;
+}
+
+#listeNutriments {
+  background-color: aqua;
   width: auto;
 }
 
-#imgNutriScore {
-  width: 100px;
-}
-
-#imgProduit {
-  width: fit-content;
-}
-
-/* Résultat de la recherche */
-#bandeauImages {
+#listeNutriments > li {
+  color: red;
 }
 
 /* mise en forme du pied de page */

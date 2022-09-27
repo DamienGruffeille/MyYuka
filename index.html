@@ -4,16 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Yuka - L'appli qui vous dit ce que vous mangez</title>
+    <title>KakaOuPasKaka - L'appli qui vous dit ce que vous mangez</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
-      <h1>My Yuka</h1>
-      <h2>
-        Mon outil de recherche pour comprendre ce que je mange, donc ce que je
-        suis !
-      </h2>
+      <h1>KakaOuPasKaka</h1>
     </header>
 
     <article>
@@ -24,14 +20,14 @@
           <input
             type="search"
             id="codeBarre"
-            placeholder="Saisissez le code barre du produit"
+            placeholder="Saisissez le code barre"
           />
           <button type="button" id="btnSearch">Rechercher</button>
         </div>
 
-        <button type="button" id="btnAfficherOptions" class="collapsible">
-          Afficher options
-        </button>
+        <div id="error">Code produit inconnu</div>
+
+        <button type="button" id="btnAfficherOptions">Afficher options</button>
 
         <div id="choixOptions">
           <div>
@@ -76,25 +72,41 @@
         </div>
       </fieldset>
 
+      <h3 id="titre">Résultat de votre recherche</h3>
       <div id="resultat">
-        <h3>Résultat de votre recherche</h3>
-        <div id="imgProduit"></div>
+        <div id="infosProduit">
+          <img id="imgProduit" src="#" alt="Photo du produit" />
 
-        <div id="nomProduit"></div>
+          <div id="nomCode">
+            <div id="nomProduit">produit</div>
 
-        <div id="codeBarres"></div>
-
-        <div id="bandeauImages">
-          <img id="imgNutriScore" src="img/nutriScoreA.jpg" alt="Nutri-score" />
-          <img id="imgNova" src="img/nova1.JPG" alt="Score Nova" />
-          <img id="imgEcoScore" src="img/ecoScoreA.JPG" alt="Eco Score" />
+            <div id="codeBarres">code barre</div>
+          </div>
         </div>
 
-        <div id="listeIngredients">Liste ingrédients</div>
+        <img src="#" id="imgNutriScore" alt="image Nutri-score"></img>
+        <img src="#" id="imgNova" alt="image Nova Score"></img>
+        <img src="#" id="imgEcoScore" alt="image Eco Score"></img>
 
-        <div id="imgTableauNutritionnel">Tableau Nutritionnel</div>
+        <div id="listesDeroulantes">
+          <button type="button" class="collapsible">Ingrédients</button>
+          <div id="listeIngredients" class="content"></div>
 
-        <div id="listeAllergenes">Allergènes</div>
+          <button type="button" class="collapsible">
+            Tableau Nutritionnel
+          </button>
+          <div id="imgTableauNutritionnel" class="content">
+            <ul id="listeNutriments">
+              <li id="graisses"></li>
+              <li id="graissesSaturees"></li>
+              <li id="sel"></li>
+              <li id="sucres"></li>
+            </ul>
+          </div>
+
+          <button type="button" class="collapsible">Allergènes</button>
+          <div id="listeAllergenes" class="content"></div>
+        </div>
       </div>
     </article>
 
