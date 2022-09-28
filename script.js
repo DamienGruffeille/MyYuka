@@ -9,12 +9,12 @@ function showOptions() {
   let options = document.getElementById("choixOptions");
   let bouton = document.getElementById("btnAfficherOptions");
 
-  if (options.style.display === "none") {
-    options.style.display = "grid";
-    bouton.innerHTML = "Cacher options";
-  } else {
+  if (options.style.display === "grid") {
     options.style.display = "none";
     bouton.innerHTML = "Afficher options";
+  } else {
+    options.style.display = "grid";
+    bouton.innerHTML = "Cacher options";
   }
 }
 
@@ -25,10 +25,10 @@ for (element of coll) {
   element.addEventListener("click", function () {
     this.classList.toggle("active");
     let content = this.nextElementSibling;
-    if (content.style.display === "none") {
-      content.style.display = "flex";
-    } else {
+    if (content.style.display === "flex") {
       content.style.display = "none";
+    } else {
+      content.style.display = "flex";
     }
   });
 }
@@ -74,14 +74,16 @@ function hideProductNotFoundErrorMessage() {
 
 function showContainers() {
   let resultat = document.getElementById("resultat");
-  resultat.style.display = "grid";
+  let titre = document.getElementById("titre");
+  titre.style.display = "block";
+  resultat.style.display = "flex";
 }
 
 function printResults(value) {
   document.getElementById("nomProduit").innerHTML =
-    "Nom : " + value.product.product_name;
+    "<span class='label'>Nom : </span>" + value.product.product_name;
   document.getElementById("codeBarres").innerHTML =
-    "Code EAN13 : " + value.code;
+    "<span class='label'>Code EAN13 : </span>" + value.code;
 
   /* Affichage la photo du produit*/
   showPhoto(value.product.image_front_small_url);
@@ -120,7 +122,6 @@ function addNutriScore(nutriScore) {
     default:
       img.setAttribute("src", "img/nutriscoreVierge.jpg");
   }
-  img.style.display = "grid";
 }
 function addNovaScore(novaScore) {
   let img = document.getElementById("imgNova");
@@ -141,7 +142,6 @@ function addNovaScore(novaScore) {
     default:
       img.setAttribute("src", "img/novaNeutre.jpg");
   }
-  img.style.display = "grid";
 }
 function addEcoScore(ecoScore) {
   let img = document.getElementById("imgEcoScore");
@@ -165,7 +165,6 @@ function addEcoScore(ecoScore) {
     default:
       img.setAttribute("src", "img/ecoScoreNeutre.png");
   }
-  img.style.display = "grid";
 }
 function addListeIngredients(liste) {
   document.getElementById("listeIngredients").innerHTML = liste;
@@ -179,10 +178,76 @@ function addListeAllergenes(liste) {
   document.getElementById("listeAllergenes").innerHTML = liste;
 }
 function addTableauNutritionnel(liste) {
-  console.log(liste.fat);
-  document.getElementById("graisse").innerHTML = "Graisses : " + liste.fat;
-  document.getElementById("graissesSaturees").innerHTML =
-    "Graisses saturées : " + liste["saturated-fat"];
-  document.getElementById("salt").innerHTML = "Sel : " + liste.salt;
-  document.getElementById("sugars").innerHTML = "Sucres : " + liste.sugars;
+  let graisses = document.getElementById("fat");
+  let saturatedFat = document.getElementById("saturatedFat");
+  let sel = document.getElementById("salt");
+  let sucres = document.getElementById("sugar");
+  graisses.innerHTML = "Graisses : " + traduireNiveauNutritionnel(liste.fat);
+  saturatedFat.innerHTML =
+    "Graisses saturées : " + traduireNiveauNutritionnel(liste["saturated-fat"]);
+  sel.innerHTML = "Sel : " + traduireNiveauNutritionnel(liste.salt);
+  sucres.innerHTML = "Sucres : " + traduireNiveauNutritionnel(liste.sugars);
+}
+
+function traduireNiveauNutritionnel(termeATraduire) {
+  switch (termeATraduire) {
+    case "high":
+      return "<span id='high'>Elevé</span>";
+    case "moderate":
+      return "<span id='moderate'>Modéré</span>";
+    case "low":
+      return "<span id='low'>Bas</span>";
+    default:
+      return "<span id='undefined'>Non défini</span>";
+  }
+}
+
+/* menu caroussel */
+const items = document.querySelectorAll("img.active, img.elementImg");
+const nbSlide = items.length;
+let count = 0;
+
+document.addEventListener("keydown", keyPress);
+/* en fonction de la touche pressée, appelle la fonction correspondante */
+function keyPress(e) {
+  console.log(e);
+
+  if (e.keyCode === 37) {
+    slidePrecedente();
+  } else if (e.keyCode === 39) {
+    slideSuivante();
+  }
+}
+
+/* actions pour bouton précédent / suivant */
+const suivant = document.querySelector(".right");
+const precedent = document.querySelector(".left");
+
+precedent.addEventListener("click", slidePrecedente);
+
+function slidePrecedente() {
+  items[count].classList.remove("active");
+
+  if (count > 0) {
+    count--;
+  } else {
+    count = nbSlide - 1;
+  }
+
+  items[count].classList.add("active");
+}
+
+suivant.addEventListener("click", slideSuivante);
+
+function slideSuivante() {
+  items[count].classList.remove("active");
+
+  if (count < nbSlide - 1) {
+    count++;
+  } else {
+    count = 0;
+  }
+
+  items[count].classList.add("active");
+  console.log(count);
 }
