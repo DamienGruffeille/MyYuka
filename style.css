@@ -1,5 +1,6 @@
 body {
   font-family: helvetica, arial, sans-serif;
+  font-size: medium;
   background-color: rgb(221, 217, 217);
 }
 
@@ -19,6 +20,7 @@ article {
 /* Mise en forme du fieldset*/
 
 fieldset {
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,6 +30,10 @@ fieldset {
   border-radius: 5px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
   margin-bottom: 15px;
+}
+
+#codeBarre {
+  box-shadow: inset 0.3px 0.3px 0.3px rgba(0, 0, 0, 0.2);
 }
 
 #btnAfficherOptions {
@@ -52,11 +58,12 @@ fieldset {
 }
 
 #choixOptions {
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   grid-template-areas:
-    "opt1 opt2 opt3"
-    "opt4 opt5 opt6";
+    "opt1 opt2"
+    "opt3 opt4"
+    "opt5 opt6";
   white-space: nowrap;
   margin-top: 5px;
   display: none;
@@ -69,16 +76,11 @@ h3 {
 }
 
 #resultat {
-  /* display: grid; */
   display: none;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto;
-  grid-template-areas:
-    "infosProduit infosProduit infosProduit"
-    "imgNova imgNutriscore imgEcoScore"
-    "listesDeroulantes listesDeroulantes listesDeroulantes";
+  flex-direction: column;
   width: 100%;
   align-items: center;
+  justify-items: center;
 }
 
 #infosProduit {
@@ -86,17 +88,67 @@ h3 {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background-color: #61745b;
   border: 1px solid rgb(94, 92, 92);
   margin-bottom: 15px;
   border-radius: 5px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  width: 80%;
+}
+
+.label {
+  font-weight: bold;
 }
 
 #nomCode {
   display: flex;
   flex-direction: column;
+  margin: 5px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px;
+}
+.slider img {
+  max-width: 100%;
+  display: none;
+}
+img.active {
+  display: block;
+  animation: fade 0.8s;
+  width: 100%;
+  min-height: 150px;
+  padding: 5px;
+  border-radius: 3px;
+  height: auto;
+  background: #dad8d8;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.cont-btn {
+  width: 100%;
+  height: auto;
+  border: 1px solid #000;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+}
+.btn-nav {
+  font-size: 50px;
+  margin: 0 15px;
+  cursor: pointer;
 }
 
 #imgNutriscore {
@@ -122,15 +174,33 @@ h3 {
   grid-area: listesDeroulantes;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  width: 80%;
 }
 
 .collapsible {
+  font-size: medium;
   background-color: #61745b;
-  border: 1px solid rgb(94, 92, 92);
+  border: 1px solid rgb(0, 0, 0);
   border-radius: 5px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+}
+
+.active,
+.collapsible:hover {
+  background-color: #42503e;
+}
+
+.collapsible:after {
+  content: "\002B";
+  color: rgb(221, 217, 217);
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
 }
 
 .content {
@@ -139,12 +209,23 @@ h3 {
 }
 
 #listeNutriments {
-  background-color: aqua;
   width: auto;
 }
-
-#listeNutriments > li {
-  color: red;
+#high {
+  border: 1px solid red;
+  background-color: red;
+}
+#moderate {
+  border: 1px solid yellow;
+  background-color: yellow;
+}
+#low {
+  border: 1px solid green;
+  background-color: green;
+}
+#undefined {
+  border: 1px solid white;
+  background-color: white;
 }
 
 /* mise en forme du pied de page */
