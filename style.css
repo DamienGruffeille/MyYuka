@@ -84,7 +84,6 @@ h3 {
 }
 
 #infosProduit {
-  grid-area: infosProduit;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -105,6 +104,13 @@ h3 {
   display: flex;
   flex-direction: column;
   margin: 5px;
+}
+
+#containerPlusCollapsible {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {
@@ -153,25 +159,21 @@ img.active {
 
 #imgNutriscore {
   max-width: 100%;
-  grid-area: imgNutriscore;
   align-self: center;
   justify-self: center;
 }
 #imgNova {
   max-width: 100%;
-  grid-area: imgNova;
   align-self: center;
   justify-self: center;
 }
 #imgEcoScore {
   max-width: 100%;
-  grid-area: imgEcoScore;
   justify-self: center;
 }
 
 #listesDeroulantes {
   margin-top: 15px;
-  grid-area: listesDeroulantes;
   display: flex;
   flex-direction: column;
   width: 80%;
@@ -228,6 +230,23 @@ img.active {
   background-color: white;
 }
 
+#verdict {
+  flex-direction: column;
+}
+
+#btnVerdict {
+  display: none;
+  overflow: hidden;
+}
+
+#photoVerdict {
+  display: none;
+  overflow: hidden;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+}
+
 /* mise en forme du pied de page */
 ul {
   display: flex;
@@ -245,4 +264,17 @@ li {
 li:hover {
   cursor: pointer;
   text-decoration: underline;
+}
+
+@media only screen and (min-width: 768px) {
+  #containerPlusCollapsible {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .container {
+    margin: 15px;
+  }
 }

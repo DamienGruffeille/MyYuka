@@ -84,43 +84,45 @@
           </div>
         </div>
 
-        <div class="container">
-          <div class="slider">
-            <img src="#" id="imgNutriScore" alt="image Nutri-score" class="active"></img>
-            <img src="#" id="imgNova" alt="image Nova Score" class="elementImg"></img>
-            <img src="#" id="imgEcoScore" alt="image Eco Score" class="elementImg"></img>
-          </div>
+        <div id="containerPlusCollapsible">  
+          <div class="container">
+            <div class="slider">
+              <img src="#" id="imgNutriScore" alt="image Nutri-score" class="active"></img>
+              <img src="#" id="imgNova" alt="image Nova Score" class="elementImg"></img>
+              <img src="#" id="imgEcoScore" alt="image Eco Score" class="elementImg"></img>
+            </div>
 
-          <div class="cont-btn">
-            <div class="btn-nav left">←</div>
-            <div class="btn-nav right">→</div>
-          </div>
-        </div>
-
-        <div id="listesDeroulantes">
-          <button type="button" class="collapsible">Ingrédients</button>
-          <div id="listeIngredients" class="content"></div>
-
-          <button type="button" class="collapsible">
-            Tableau Nutritionnel
-          </button>
-          <div id="imgTableauNutritionnel" class="content">
-            <div id="listeNutriments">
-              <p id="fat"></p>
-              <p id="saturatedFat"></p>
-              <p id="salt"></p>
-              <p id="sugar"></p>
+            <div class="cont-btn">
+              <div class="btn-nav left">←</div>
+              <div class="btn-nav right">→</div>
             </div>
           </div>
 
-          <button type="button" class="collapsible">Allergènes</button>
-          <div id="listeAllergenes" class="content"></div>
+          <div id="listesDeroulantes">
+            <button type="button" class="collapsible">Ingrédients</button>
+            <div id="listeIngredients" class="content"></div>
+
+            <button type="button" class="collapsible">
+              Tableau Nutritionnel
+            </button>
+            <div id="imgTableauNutritionnel" class="content">
+              <div id="listeNutriments">
+                <p id="fat"></p>
+                <p id="saturatedFat"></p>
+                <p id="salt"></p>
+                <p id="sugar"></p>
+              </div>
+            </div>
+
+            <button type="button" class="collapsible">Allergènes</button>
+            <div id="listeAllergenes" class="content"></div>
+          </div>
         </div>
-      </div>
+    </div>
 
       <div id="verdict">
-
-
+        <button type="button" id="btnVerdict">Voir le verdict final</button>
+        <img src="#" alt="photo du verdict" id="photoVerdict">
         
       </div>
     </article>

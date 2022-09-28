@@ -56,6 +56,7 @@ function getResults() {
         hideProductNotFoundErrorMessage();
         showContainers();
         printResults(value);
+        showPhotoVerdict(value);
       }
     })
     .catch((error) => {
@@ -75,8 +76,10 @@ function hideProductNotFoundErrorMessage() {
 function showContainers() {
   let resultat = document.getElementById("resultat");
   let titre = document.getElementById("titre");
+  let verdict = document.getElementById("btnVerdict");
   titre.style.display = "block";
   resultat.style.display = "flex";
+  verdict.style.display = "flex";
 }
 
 function printResults(value) {
@@ -250,4 +253,83 @@ function slideSuivante() {
 
   items[count].classList.add("active");
   console.log(count);
+}
+
+/* Affichage du verdict final */
+
+function calculScoreFinal(produit) {
+  let scoreFinal = 0;
+
+  switch (produit.product.nutriscore_grade) {
+    case "a":
+      scoreFinal = -2;
+      break;
+    case "b":
+      scoreFinal = -1;
+      break;
+    /* le case c n'est pas pris en compte car =0 */
+    case "d":
+      scoreFinal = 1;
+      break;
+    case "e":
+      scoreFinal = 2;
+      break;
+  }
+
+  switch (produit.product.nova_group) {
+    case 1:
+      scoreFinal -= 2;
+      break;
+    case 2:
+      scoreFinal -= 1;
+      break;
+    case 3:
+      scoreFinal += 1;
+      break;
+    case 4:
+      scoreFinal += 2;
+      break;
+  }
+
+  switch (produit.product.ecoscore_grade) {
+    case "a":
+      scoreFinal -= 2;
+      break;
+    case "b":
+      scoreFinal -= 1;
+      break;
+    /* le case c n'est pas pris en compte car =0 */
+    case "d":
+      scoreFinal += 1;
+      break;
+    case "e":
+      scoreFinal += 2;
+      break;
+  }
+
+  return scoreFinal;
+}
+
+function showPhotoVerdict(value) {
+  let img = document.getElementById("photoVerdict");
+  let scoreFinal = calculScoreFinal(value);
+  let button = document.getElementById("btnVerdict");
+
+  if (scoreFinal === 0) {
+    img.setAttribute("src", "img/neutre.jpg");
+  } else if (scoreFinal < 0) {
+    img.setAttribute("src", "img/OK.jpg");
+  } else {
+    img.setAttribute("src", "img/caca.jpg");
+  }
+
+  document.getElementById("btnVerdict").addEventListener("click", function () {
+    if (img.style.display === "flex") {
+      img.style.display = "none";
+      button.innerHTML = "Afficher le verdict";
+    } else {
+      img.style.display = "flex";
+      button.innerHTML = "Cacher le verdict";
+    }
+  });
 }
