@@ -76,10 +76,12 @@ function hideProductNotFoundErrorMessage() {
 function showContainers() {
   let resultat = document.getElementById("resultat");
   let titre = document.getElementById("titre");
-  let verdict = document.getElementById("btnVerdict");
+  let verdict = document.getElementById("verdict");
+  let btnVerdict = document.getElementById("btnVerdict");
   titre.style.display = "block";
   resultat.style.display = "flex";
   verdict.style.display = "flex";
+  btnVerdict.style.display = "flex";
 }
 
 function printResults(value) {
@@ -311,25 +313,51 @@ function calculScoreFinal(produit) {
 }
 
 function showPhotoVerdict(value) {
-  let img = document.getElementById("photoVerdict");
   let scoreFinal = calculScoreFinal(value);
-  let button = document.getElementById("btnVerdict");
+  let chemin = "";
 
   if (scoreFinal === 0) {
-    img.setAttribute("src", "img/neutre.jpg");
+    chemin = "img/neutre.jpg";
   } else if (scoreFinal < 0) {
-    img.setAttribute("src", "img/OK.jpg");
+    chemin = "img/OK.jpg";
   } else {
-    img.setAttribute("src", "img/caca.jpg");
+    chemin = "img/caca.jpg";
   }
 
+  afficheimg(chemin, "Verdict Final", 0);
+}
+
+function afficheimg(chemin, titrepage, scrollbar) {
   document.getElementById("btnVerdict").addEventListener("click", function () {
-    if (img.style.display === "flex") {
-      img.style.display = "none";
-      button.innerHTML = "Afficher le verdict";
-    } else {
-      img.style.display = "flex";
-      button.innerHTML = "Cacher le verdict";
-    }
+    var titre = "verdict";
+    i1 = new Image();
+    i1.src = chemin;
+    html =
+      "<HTML><HEAD><TITLE>Images " +
+      titre +
+      " - " +
+      titrepage +
+      "</TITLE></HEAD>";
+    html +=
+      "<BODY LEFTMARGIN=0 MARGINWIDTH=0 TOPMARGIN=0 MARGINHEIGHT=0><CENTER>";
+    html +=
+      '<IMG SRC="' +
+      chemin +
+      '" BORDER=0 ALT="' +
+      titrepage +
+      '" NAME=imageTest ';
+    html +=
+      'onLoad="window.resizeTo(document.imageTest.width+14, document.imageTest.height+32)">';
+    html += "</CENTER></BODY></HTML>";
+    popupImage = window.open(
+      "",
+      "mysupimg",
+      "toolbar=0, location=0, directories=0, menuBar=0, scrollbars=" +
+        scrollbar +
+        ", resizable=1"
+    );
+    popupImage.document.open();
+    popupImage.document.write(html);
+    popupImage.document.close();
   });
 }
