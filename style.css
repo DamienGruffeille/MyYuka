@@ -240,11 +240,15 @@ img.active {
 }
 
 #photoVerdict {
+  width: 20%;
   display: none;
   overflow: hidden;
   position: absolute;
-  top: -20px;
-  left: -20px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }
 
 /* mise en forme du pied de page */
