@@ -1,6 +1,7 @@
 const api = "https://fr.openfoodfacts.org/api/2/product/";
 // const api = "http://172.16.130.38:5500/json/";
 
+// Bouton Afficher options
 document
   .getElementById("btnAfficherOptions")
   .addEventListener("click", showOptions);
@@ -33,6 +34,7 @@ for (element of coll) {
   });
 }
 
+// Connexion et récupération des infos de l'API openfoodfacts
 document.getElementById("btnSearch").addEventListener("click", getResults);
 
 function getResults() {
@@ -64,6 +66,7 @@ function getResults() {
     });
 }
 
+// Gestion de l'affichage du message d'erreur "Product Not Found"
 function showProductNotFoundErrorMessage() {
   let messageErreur = document.getElementById("error");
   messageErreur.style.display = "flex";
@@ -73,6 +76,7 @@ function hideProductNotFoundErrorMessage() {
   messageErreur.style.display = "none";
 }
 
+// Gestion de l'affichage des containers où sont retournées les infos produit
 function showContainers() {
   let resultat = document.getElementById("resultat");
   let titre = document.getElementById("titre");
@@ -84,6 +88,7 @@ function showContainers() {
   btnVerdict.style.display = "flex";
 }
 
+// Intégration des informations produit dans les containers
 function printResults(value) {
   document.getElementById("nomProduit").innerHTML =
     "<span class='label'>Nom : </span>" + value.product.product_name;
@@ -105,6 +110,7 @@ function printResults(value) {
   addTableauNutritionnel(value.product.nutrient_levels);
 }
 
+// Affichage de l'image nutriscore correspondante au score du produit
 function addNutriScore(nutriScore) {
   let img = document.getElementById("imgNutriScore");
 
@@ -128,6 +134,8 @@ function addNutriScore(nutriScore) {
       img.setAttribute("src", "img/nutriscoreVierge.jpg");
   }
 }
+
+// Affichage de l'image NovaScore correspondante au score du produit
 function addNovaScore(novaScore) {
   let img = document.getElementById("imgNova");
 
@@ -148,6 +156,7 @@ function addNovaScore(novaScore) {
       img.setAttribute("src", "img/novaNeutre.jpg");
   }
 }
+// Affichage de l'image EcoScore correspondante au score du produit
 function addEcoScore(ecoScore) {
   let img = document.getElementById("imgEcoScore");
 
@@ -171,17 +180,25 @@ function addEcoScore(ecoScore) {
       img.setAttribute("src", "img/ecoScoreNeutre.png");
   }
 }
+
+// Affichage de la liste des ingrédients retourné par l'API
 function addListeIngredients(liste) {
   document.getElementById("listeIngredients").innerHTML = liste;
 }
+
+// Affichage de l'image du produit retournée par l'API
 function showPhoto(url) {
   let photo = document.getElementById("imgProduit");
   photo.setAttribute("src", url);
   photo.style.display = "grid";
 }
+
+// Affichage de la liste des allergènes retournée par l'API
 function addListeAllergenes(liste) {
   document.getElementById("listeAllergenes").innerHTML = liste;
 }
+
+// Affichage des infos niveau nutritionnel retournées par l'API
 function addTableauNutritionnel(liste) {
   let graisses = document.getElementById("fat");
   let saturatedFat = document.getElementById("saturatedFat");
@@ -194,6 +211,7 @@ function addTableauNutritionnel(liste) {
   sucres.innerHTML = "Sucres : " + traduireNiveauNutritionnel(liste.sugars);
 }
 
+// Traduction des niveaux nutritionnels retournés par l'API de l'anglais vers le français
 function traduireNiveauNutritionnel(termeATraduire) {
   switch (termeATraduire) {
     case "high":
@@ -312,21 +330,6 @@ function calculScoreFinal(produit) {
   return scoreFinal;
 }
 
-function showPhotoVerdict(value) {
-  let scoreFinal = calculScoreFinal(value);
-  let chemin = "";
-
-  if (scoreFinal === 0) {
-    chemin = "img/neutre.jpg";
-  } else if (scoreFinal < 0) {
-    chemin = "img/OK.jpg";
-  } else {
-    chemin = "img/caca.jpg";
-  }
-
-  afficheimg(chemin, "Verdict Final", 0);
-}
-
 function afficheimg(chemin, titrepage, scrollbar) {
   document.getElementById("btnVerdict").addEventListener("click", function () {
     var titre = "verdict";
@@ -360,4 +363,19 @@ function afficheimg(chemin, titrepage, scrollbar) {
     popupImage.document.write(html);
     popupImage.document.close();
   });
+}
+
+function showPhotoVerdict(value) {
+  let scoreFinal = calculScoreFinal(value);
+  let chemin = "";
+
+  if (scoreFinal === 0) {
+    chemin = "img/neutre.jpg";
+  } else if (scoreFinal < 0) {
+    chemin = "img/OK.jpg";
+  } else {
+    chemin = "img/caca.jpg";
+  }
+
+  afficheimg(chemin, "Verdict Final", 0);
 }

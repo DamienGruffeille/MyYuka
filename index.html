@@ -13,6 +13,7 @@
     </header>
 
     <article>
+      <!-- Bloc barre de recherche -->
       <fieldset>
         <legend>Recherche</legend>
 
@@ -26,9 +27,9 @@
         </div>
 
         <div id="error">Code produit inconnu</div>
-
+        <!-- bouton permettant d'afficher ou cacher les options  -->
         <button type="button" id="btnAfficherOptions">Afficher options</button>
-
+        <!-- Options de recherche -->
         <div id="choixOptions">
           <div>
             <input
@@ -72,8 +73,10 @@
         </div>
       </fieldset>
 
+      <!-- Bloc où sont affichées les infos produit -->
       <h3 id="titre">Résultat de votre recherche</h3>
       <div id="resultat">
+        <!-- Bloc où sont affichées photo, nom et code barre retournés par l'API -->
         <div id="infosProduit">
           <img id="imgProduit" src="#" alt="Photo du produit" />
 
@@ -83,7 +86,7 @@
             <div id="codeBarres"></div>
           </div>
         </div>
-
+        <!-- Bloc où sont affichées les images du score du produit -->
         <div id="containerPlusCollapsible">  
           <div class="container">
             <div class="slider">
@@ -97,7 +100,7 @@
               <div class="btn-nav right">→</div>
             </div>
           </div>
-
+          <!-- Bloc où sont affichées les infos ingrédients retournées par l'API -->
           <div id="listesDeroulantes">
             <button type="button" class="collapsible">Ingrédients</button>
             <div id="listeIngredients" class="content"></div>
@@ -118,8 +121,9 @@
             <div id="listeAllergenes" class="content"></div>
           </div>
         </div>
-    </div>
+      </div>
 
+      <!-- Bouton permettant d'afficher la fenêtre contextuelle du verdict sur le produit  -->
       <div id="verdict">
         <button type="button" id="btnVerdict">Voir le verdict final</button>
         <img src="#" alt="photo du verdict" id="photoVerdict">
@@ -134,6 +138,6 @@
       </ul>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="scripts/script.js"></script>
   </body>
 </html>
